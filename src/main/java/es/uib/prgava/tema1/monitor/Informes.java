@@ -1,7 +1,6 @@
 // Informes.java
 package es.uib.prgava.tema1.monitor;
 
-import java.util.Comparator;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.LongSummaryStatistics;

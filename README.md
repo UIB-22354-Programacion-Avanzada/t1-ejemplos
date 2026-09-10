@@ -32,8 +32,8 @@ evolucionan con los principios SOLID), aquí está su **versión final**.
 Este repositorio es una **plantilla**. No trabajes directamente sobre él: crea tu propia copia.
 
 1. Pulsa el botón verde **Use this template** → **Create a new repository**.
-2. Como propietario elige **tu cuenta personal** de GitHub, dale un nombre (preferiblemente
-   `t1-ejemplos`) y créalo. Hazlo privado.
+2. Como propietario elige **tu cuenta personal** de GitHub, dale un nombre (por ejemplo
+   `t1-ejemplos`) y créalo. Puede ser público o privado.
 
 A partir de aquí, todo se hace en tu copia.
 
