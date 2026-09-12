@@ -154,3 +154,20 @@ Codespace (**Reopen in Container**), con lo que no necesitas instalar Java.
   que no has subido. `git status` te dirá cuál.
 - **IntelliJ marca errores en `record`, `sealed` o `switch` con patrones**: el SDK del proyecto
   o el *language level* no es 25. Revisa **File → Project Structure → Project**.
+
+## Licencia
+
+El código de este repositorio se publica bajo licencia [MIT](LICENSE) — copyright © 2026
+Alejandro Mesejo. Puedes usarlo, copiarlo y modificarlo libremente, dentro y fuera de la
+asignatura, conservando el aviso de copyright.
+
+Esa licencia cubre el **material de partida**: los esqueletos, las clases ya escritas y las
+pruebas. Cuando crees tu copia con **Use this template**, el fichero `LICENSE` viaja con ella,
+pero **las modificaciones que escribas son tuyas** y puedes licenciarlas como quieras. Si haces
+público tu repositorio y quieres dejarlo claro, añade tu propio nombre al aviso de copyright o
+una nota al principio de este README.
+
+Las explicaciones del tema y el resto del material docente están en el
+[sitio web de la asignatura](https://uib-22354-programacion-avanzada.github.io/website/) y se
+publican bajo licencia
+[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
