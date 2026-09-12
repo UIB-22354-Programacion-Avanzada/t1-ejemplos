@@ -171,4 +171,4 @@ una nota al principio de este README.
 Las explicaciones del tema y el resto del material docente están en el
 [sitio web de la asignatura](https://uib-22354-programacion-avanzada.github.io/website/) y se
 publican bajo licencia
-[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en).
