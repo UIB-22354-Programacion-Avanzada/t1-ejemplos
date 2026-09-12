@@ -85,45 +85,7 @@ java -cp target/classes es.uib.prgava.tema1.genericos.Composicion
 También puedes usar el icono de matraz (*Testing*) de la barra lateral de VS Code, que muestra
 las pruebas en árbol y permite ejecutar una sola con un clic.
 
-## 4. Explorar los ejemplos con JShell
-
-Ejecutar un programa entero te muestra el resultado final. **JShell**, el intérprete interactivo
-que viene con el JDK, te deja ir línea a línea: escribes una expresión, ves lo que devuelve, y
-sigues desde ahí. Es la forma más rápida de entender qué hace una clase.
-
-En `guiones/` hay un guion por sección del tema. Cada uno monta el escenario del apartado y te
-deja **dentro** del intérprete, con los objetos ya creados:
-
-```bash
-mvn -q compile
-jshell --class-path target/classes guiones/1.2-solid.jsh
-```
-
-| Guion | Qué prepara |
-|---|---|
-| `1.1-objetos.jsh` | clases, objetos, igualdad, registros e interfaz sellada |
-| `1.2-solid.jsh` | el monitor cableado, políticas intercambiables, Decorator |
-| `1.3-genericos.jsh` | genéricos propios, PECS e informes con Streams |
-| `1.4-pruebas.jsh` | dobles de prueba escritos a mano |
-
-A partir del indicador `jshell>` experimenta con lo que hay: cambia una política, suscribe otro
-notificador, vuelve a lanzar el bucle. Cada guion termina sugiriéndote dos cosas que probar.
-
-Órdenes útiles dentro del intérprete:
-
-```text
-/vars          variables definidas hasta ahora
-/list          todo lo que se ha ejecutado, numerado
-/methods       métodos y clases que has declarado tú
-/open guiones/1.3-genericos.jsh    carga otro guion sin salir
-/exit          salir
-```
-
-Nada de lo que hagas en JShell modifica los ficheros del proyecto: es una sesión aparte que se
-pierde al salir. Si algo te sale bien y quieres conservarlo, llévalo a una clase con `main` o a
-una prueba.
-
-## 5. Modificar el código
+## 4. Modificar el código
 
 Trabaja como en cualquier proyecto: edita, guarda (`Ctrl+S`), vuelve a ejecutar. Algunas
 sugerencias para empezar, de menor a mayor dificultad:
@@ -149,7 +111,7 @@ git push
 Cada `push` ejecuta automáticamente las pruebas en GitHub Actions; verás el resultado en la
 pestaña **Actions** de tu repositorio y como una marca ✓ o ✗ junto al último *commit*.
 
-## 6. Pasar el desarrollo a IntelliJ IDEA (opcional)
+## 5. Pasar el desarrollo a IntelliJ IDEA (opcional)
 
 Si prefieres trabajar en tu ordenador con un IDE Java completo, puedes seguir usando el mismo
 repositorio desde **IntelliJ IDEA Community** (gratuito). El proyecto es Maven estándar, así
