@@ -1,6 +1,17 @@
 # .github/workflows/pruebas.yml
 name: pruebas
-on: [push, pull_request]
+
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+      - '.gitignore'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+      - '.gitignore'
 
 jobs:
   test:
