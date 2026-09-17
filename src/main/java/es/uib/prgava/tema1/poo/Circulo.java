@@ -11,4 +11,7 @@ public final class Circulo extends Figura {
 
     @Override
     public double area() { return Math.PI * radio * radio; }
+
+    @Override
+    public Circulo escalar(double factor) { return new Circulo(radio * factor); }
 }

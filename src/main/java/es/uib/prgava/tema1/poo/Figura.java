@@ -8,6 +8,9 @@ public abstract class Figura {
 
     public abstract double area();
 
+    /** Devuelve una figura del mismo tipo con el tamaño multiplicado por el factor. */
+    public abstract Figura escalar(double factor);
+
     public String describir() {
         return nombre + " de área " + area();   // llama al método abstracto: enlace dinámico
     }

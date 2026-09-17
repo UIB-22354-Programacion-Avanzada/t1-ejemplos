@@ -14,11 +14,12 @@ public final class LectorConfiguracion {
 
     public static List<Servicio> leer(Path fichero) {
         var servicios = new ArrayList<Servicio>();
-        try (var lineas = Files.lines(fichero)) {          // el stream se cierra al salir
+        try (var lector = Files.newBufferedReader(fichero)) {   // se cierra al salir del try
+            String linea;
             int numero = 0;
-            for (var it = lineas.iterator(); it.hasNext(); ) {
+            while ((linea = lector.readLine()) != null) {
                 numero++;
-                var linea = it.next().strip();
+                linea = linea.strip();
                 if (linea.isEmpty() || linea.startsWith("#")) {
                     continue;
                 }

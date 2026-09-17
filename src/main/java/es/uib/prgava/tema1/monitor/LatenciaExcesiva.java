@@ -16,12 +16,15 @@ public final class LatenciaExcesiva implements PoliticaDeAlerta {
     @Override
     public boolean debeAlertar(List<Resultado> historial) {
         if (historial.size() < muestras) return false;
-        var recientes = historial.subList(historial.size() - muestras, historial.size());
-        long totalMs = recientes.stream()
-                .filter(r -> !r.esFallo())
-                .mapToLong(r -> r.latencia().toMillis())
-                .sum();
-        long activos = recientes.stream().filter(r -> !r.esFallo()).count();
+        long totalMs = 0;                 // suma de latencias de las muestras que respondieron
+        long activos = 0;                 // cuántas respondieron
+        for (int i = historial.size() - muestras; i < historial.size(); i++) {
+            var resultado = historial.get(i);
+            if (!resultado.esFallo()) {
+                totalMs += resultado.latencia().toMillis();
+                activos++;
+            }
+        }
         return activos > 0 && totalMs / activos > umbral.toMillis();
     }
 

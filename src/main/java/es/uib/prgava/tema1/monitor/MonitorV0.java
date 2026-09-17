@@ -44,9 +44,12 @@ public class MonitorV0 {
         }
         // 5. Informe final
         for (var servicio : servicios) {
-            long fallos = historial.stream()
-                    .filter(r -> r.servicio().equals(servicio) && r.esFallo())
-                    .count();
+            long fallos = 0;
+            for (var resultado : historial) {
+                if (resultado.servicio().equals(servicio) && resultado.esFallo()) {
+                    fallos++;
+                }
+            }
             System.out.println(servicio.nombre() + ": " + fallos + " fallos de " + rondas);
         }
     }

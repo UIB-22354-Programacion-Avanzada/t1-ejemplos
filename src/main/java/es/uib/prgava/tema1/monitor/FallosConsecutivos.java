@@ -14,9 +14,10 @@ public final class FallosConsecutivos implements PoliticaDeAlerta {
     @Override
     public boolean debeAlertar(List<Resultado> historial) {
         if (historial.size() < minimo) return false;
-        return historial.subList(historial.size() - minimo, historial.size())
-                        .stream()
-                        .allMatch(Resultado::esFallo);
+        for (int i = historial.size() - minimo; i < historial.size(); i++) {
+            if (!historial.get(i).esFallo()) return false;   // uno bueno rompe la racha
+        }
+        return true;
     }
 
     @Override
