@@ -1,4 +1,4 @@
-// Figura.java
+// Figura.java (con escalar)
 package es.uib.prgava.tema1.poo;
 
 public abstract class Figura {

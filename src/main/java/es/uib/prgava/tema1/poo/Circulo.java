@@ -1,4 +1,4 @@
-// Circulo.java
+// Circulo.java (con escalar)
 package es.uib.prgava.tema1.poo;
 
 public final class Circulo extends Figura {
