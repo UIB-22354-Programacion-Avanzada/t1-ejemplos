@@ -57,7 +57,7 @@ public class MonitorV0 {
         List<Servicio> servicios = List.of(
                 new ServicioHttp(URI.create("https://www.uib.es")),
                 new ServicioDns("uib.es"),
-                new PuertoTcp("mail.uib.es", 25));
+                new ServicioTcp("mail.uib.es", 25));
         new MonitorV0().ejecutar(servicios, 20);
     }
 }

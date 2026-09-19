@@ -25,7 +25,7 @@ class ServicioTest {
     void tcpProduceHostYPuerto() {
         var servicio = Servicio.desde("tcp:mail.uib.es:25");
 
-        assertEquals(new PuertoTcp("mail.uib.es", 25), servicio);
+        assertEquals(new ServicioTcp("mail.uib.es", 25), servicio);
     }
 
     @Test

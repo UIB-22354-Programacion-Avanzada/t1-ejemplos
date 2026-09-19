@@ -1,8 +1,8 @@
-// PuertoTcp.java
+// ServicioTcp.java
 package es.uib.prgava.tema1.monitor;
 
-public record PuertoTcp(String host, int puerto) implements Servicio {
-    public PuertoTcp {
+public record ServicioTcp(String host, int puerto) implements Servicio {
+    public ServicioTcp {
         if (host == null || host.isBlank()) {
             throw new IllegalArgumentException("Host vacío");
         }

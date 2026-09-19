@@ -25,7 +25,7 @@ public interface Servicio {
             if (partes.length != 2) {
                 throw new IllegalArgumentException("se esperaba tcp:host:puerto, no " + t);
             }
-            return new PuertoTcp(partes[0], Integer.parseInt(partes[1]));
+            return new ServicioTcp(partes[0], Integer.parseInt(partes[1]));
         }
         throw new IllegalArgumentException("tipo de servicio desconocido: " + t);
     }
