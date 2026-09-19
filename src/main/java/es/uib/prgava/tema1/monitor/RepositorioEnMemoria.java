@@ -4,7 +4,6 @@ package es.uib.prgava.tema1.monitor;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 public final class RepositorioEnMemoria implements RepositorioResultados {
@@ -24,16 +23,6 @@ public final class RepositorioEnMemoria implements RepositorioResultados {
             }
         }
         return List.copyOf(suyos);
-    }
-
-    @Override
-    public Optional<Resultado> ultimo(Servicio servicio) {
-        for (int i = datos.size() - 1; i >= 0; i--) {     // del más reciente hacia atrás
-            if (datos.get(i).servicio().equals(servicio)) {
-                return Optional.of(datos.get(i));
-            }
-        }
-        return Optional.empty();
     }
 
     @Override
