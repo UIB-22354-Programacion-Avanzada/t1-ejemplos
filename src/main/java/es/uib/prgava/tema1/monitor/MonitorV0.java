@@ -1,7 +1,7 @@
 // MonitorV0.java
 package es.uib.prgava.tema1.monitor;
 
-import java.nio.file.Path;
+import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,7 @@ public class MonitorV0 {
     private final Random aleatorio = new Random(42);
     private final Duration umbral = Duration.ofMillis(300);
 
-    public void ejecutar(Path configuracion, int rondas) {
-        var servicios = LectorConfiguracion.leer(configuracion);
+    public void ejecutar(List<Servicio> servicios, int rondas) {
         for (int ronda = 1; ronda <= rondas; ronda++) {
             for (var servicio : servicios) {
                 // 1. Comprobar (simulado): latencia aleatoria, 10 % de fallos
@@ -55,6 +54,10 @@ public class MonitorV0 {
     }
 
     public static void main(String[] args) {
-        new MonitorV0().ejecutar(Path.of(args[0]), 20);
+        List<Servicio> servicios = List.of(
+                new ServicioHttp(URI.create("https://www.uib.es")),
+                new ServicioDns("uib.es"),
+                new PuertoTcp("mail.uib.es", 25));
+        new MonitorV0().ejecutar(servicios, 20);
     }
 }

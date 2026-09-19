@@ -15,9 +15,11 @@ public abstract class SondaBase implements Sonda {
     /** Método plantilla: fija el algoritmo; las subclases solo implementan {@link #medir}. */
     @Override
     public final Resultado sondear(Servicio servicio) {
-        return medir(servicio)
-                .map(latencia -> clasificar(servicio, latencia))
-                .orElseGet(() -> Resultado.caido(servicio));
+        var latencia = medir(servicio);
+        if (latencia.isEmpty()) {
+            return Resultado.caido(servicio);
+        }
+        return clasificar(servicio, latencia.get());
     }
 
     /** Paso variable: latencia observada, o vacío si el servicio no responde. */

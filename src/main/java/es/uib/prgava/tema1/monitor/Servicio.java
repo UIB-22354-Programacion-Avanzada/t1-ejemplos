@@ -3,7 +3,7 @@ package es.uib.prgava.tema1.monitor;
 
 import java.net.URI;
 
-public sealed interface Servicio permits ServicioHttp, ServicioDns, PuertoTcp {
+public interface Servicio {
 
     String nombre();
 
