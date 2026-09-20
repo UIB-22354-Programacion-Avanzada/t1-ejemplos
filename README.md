@@ -15,12 +15,11 @@ t1-ejemplos/
 ├── .devcontainer/devcontainer.json   ← configuración del Codespace (JDK 25 + Maven)
 ├── .github/workflows/pruebas.yml     ← ejecuta las pruebas en cada push
 ├── pom.xml                           ← proyecto Maven
-├── servicios.txt                     ← configuración de ejemplo para el monitor
-├── guiones/                          ← guiones de JShell, uno por sección (ver 4)
+├── servicios.txt                     ← ejemplo del formato textual que lee `Servicio.desde`
 └── src/
     ├── main/java/es/uib/prgava/tema1/
     │   ├── poo/         ← ejemplos breves de la sección 1.1 (DispositivoRed, Enrutador, Punto, ...)
-    │   ├── monitor/     ← el ejemplo motivador: monitor de servicios de red (secciones 1.1–1.3)
+    │   ├── monitor/     ← el ejemplo unificador: monitor de servicios de red (secciones 1.2–1.4)
     │   └── genericos/   ← ejemplos breves de la sección 1.3 (Par, Copias, Composicion, ...)
     └── test/java/es/uib/prgava/tema1/monitor/   ← pruebas JUnit 5 de la sección 1.4
 ```
@@ -68,18 +67,24 @@ Hay tres formas, y conviene conocer las tres.
 **Desde el editor.** Abre una clase con `main` (por ejemplo
 `src/main/java/es/uib/prgava/tema1/poo/DemoDispositivos.java`). Encima del método `main`
 aparece el enlace **Run | Debug**; pulsa *Run* y la salida se muestra en el terminal.
-Los programas que reciben argumentos (`Principal` y `MonitorV0` necesitan la ruta de
-`servicios.txt`) se ejecutan mejor desde el terminal.
+Ninguno de los programas necesita argumentos: los servicios a vigilar se construyen en el
+propio código de `Principal` y de `MonitorV0`.
 
 **Desde el terminal, con Maven:**
 
 ```bash
 mvn -q compile                                                     # compila a target/classes
 java -cp target/classes es.uib.prgava.tema1.poo.DemoDispositivos
-java -cp target/classes es.uib.prgava.tema1.monitor.Principal servicios.txt
+java -cp target/classes es.uib.prgava.tema1.monitor.MonitorV0
+java -cp target/classes es.uib.prgava.tema1.monitor.Principal
 java -cp target/classes es.uib.prgava.tema1.monitor.DemoInformes
 java -cp target/classes es.uib.prgava.tema1.genericos.Composicion
 ```
+
+Un aviso sobre uno de ellos: `genericos.Varianza` **termina con una excepción a propósito**.
+Es el ejemplo que demuestra que los *arrays* de Java son covariantes y que por eso el fallo
+aparece al ejecutar, con `ArrayStoreException`, y no al compilar. Que reviente es el resultado
+esperado.
 
 **Las pruebas.** `mvn test` ejecuta todas; `mvn -Dtest=MonitorTest test` solo una clase.
 También puedes usar el icono de matraz (*Testing*) de la barra lateral de VS Code, que muestra
@@ -95,8 +100,9 @@ sugerencias para empezar, de menor a mayor dificultad:
   cinco comprobaciones») y úsala en `Principal`. No deberías tocar `Monitor`.
 - Escribe una prueba para esa política en `src/test/java/.../monitor/`, siguiendo el estilo de
   `FallosConsecutivosTest`, y ejecútala.
-- Añade un nuevo tipo de servicio a la interfaz sellada `Servicio` y observa qué deja de
-  compilar y por qué.
+- Añade un nuevo tipo de servicio (`ServicioPing`, por ejemplo) implementando `Servicio`, y
+  enséñale a reconocerlo a la fábrica `Servicio.desde`. Fíjate en que `Monitor` no cambia: esa
+  es la promesa del principio abierto/cerrado.
 
 Cuando quieras guardar tu trabajo en GitHub, usa la vista **Source Control** de VS Code (icono
 de ramas en la barra lateral): escribe un mensaje, pulsa **Commit** y después **Sync Changes**.
@@ -130,8 +136,7 @@ que IntelliJ lo entiende sin ninguna configuración adicional.
    25 (lo toma del `pom.xml`).
 5. Ejecuta cualquier clase con `main` con el triángulo verde del margen, y las pruebas con el
    mismo triángulo junto a la clase o al método de prueba, o con clic derecho sobre
-   `src/test/java` → **Run 'All Tests'**. Para `Principal`, añade `servicios.txt` como argumento
-   en **Run → Edit Configurations → Program arguments**.
+   `src/test/java` → **Run 'All Tests'**.
 6. Los *commits* y *push* se hacen desde el menú **Git** (o `Ctrl+K` para *commit*,
    `Ctrl+Shift+K` para *push*).
 
@@ -153,7 +158,7 @@ Codespace (**Reopen in Container**), con lo que no necesitas instalar Java.
   **Codespaces: View Creation Log**.
 - **Las pruebas pasan en local pero fallan en Actions** (o al revés): casi siempre es un fichero
   que no has subido. `git status` te dirá cuál.
-- **IntelliJ marca errores en `record`, `sealed` o `switch` con patrones**: el SDK del proyecto
+- **IntelliJ marca errores en `record`, `var` o `instanceof` con patrones**: el SDK del proyecto
   o el *language level* no es 25. Revisa **File → Project Structure → Project**.
 
 ## Licencia
